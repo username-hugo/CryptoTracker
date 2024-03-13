@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Cryptocurrencies</title>
+</head>
+
+<body>
+    <h1>Top 10 Cryptocurrencies</h1>
+    <ul>
+        {% for crypto in cryptos %}
+        <li>
+            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo">
+            {{ crypto.name }} ({{ crypto.symbol }}): ${{ crypto.quote.USD.price }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
