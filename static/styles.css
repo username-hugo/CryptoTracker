@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #4fc381;
+    overflow: hidden;
+}
+
+.main-container {
+    width: 100%;
+    height: 50vh;
+    /* Ajustar la altura para compensar el ancho del scrollbar */
+    display: flex;
+    /* Usar flexbox */
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente */
+    background-color: #4fc381;
+}
+
+.title {
+    font-size: 200px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -10px;
+    line-height: 0.75;
+    text-align: center;
+    color: white;
+}
+
+
+.currencies-container {
+    width: 99%;
+    height: 47vh;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid red;
+    overflow: hidden;
+    /* Ocultar el desbordamiento */
+    display: flex;
+    /* Usar flexbox para alinear elementos */
+}
+
+.table-wrapper {
+    width: 50%;
+    /* Ocupa el 50% del ancho de currencies-container */
+    overflow-x: auto;
+    /* Añade scroll horizontal si es necesario */
+    border: 2px solid red;
+}
+
+.crypto-table {
+    border-collapse: collapse;
+    /* Colapsar los bordes de la tabla */
+    width: 100%;
+    /* Ocupa el 100% del ancho del contenedor */
+}
+
+.crypto-table th,
+.crypto-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    /* Borde inferior para las celdas */
+    text-align: center;
+    /* Centrar el contenido de las celdas */
+}
+
+.crypto-table th {
+    background-color: #f0f0f0;
+    /* Color de fondo para las cabeceras */
+}
+
+.crypto-table img {
+    width: 40px;
+    /* Tamaño del logo */
+    display: block;
+    margin: 0 auto;
+    /* Centra la imagen horizontalmente */
+}

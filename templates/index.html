@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 10 Cryptocurrencies</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;&display=swap" rel="stylesheet">
+
 </head>
-
 <body>
-    <h1>Top 10 Cryptocurrencies</h1>
-    <ul>
-        {% for crypto in cryptos %}
-        <li>
-            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo">
-            {{ crypto.name }} ({{ crypto.symbol }}): ${{ crypto.quote.USD.price }}
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="main-container">
+        <span class='title'>CRYPTO<br/>TRACKER</span>
+    </div>
+    <div class="currencies-container">
+        <div class="table-wrapper">
+            <table class="crypto-table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Name</th>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody class="crypto-list">
+                    {% for crypto in cryptos %}
+                    <tr>
+                        <td><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
+                        <td>{{ crypto.name }}</td>
+                        <td>{{ crypto.symbol }}</td>
+                        <td>${{ crypto.quote.USD.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
-
 </html>
