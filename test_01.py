@@ -17,7 +17,7 @@ def get_top_10_cryptos():
         "X-CMC_PRO_API_KEY": API_KEY,
     }
 
-    params = {"limit": "10"}
+    params = {"limit": "50"}
 
     response = requests.get(BASE_URL, headers=headers, params=params)
     data = response.json()

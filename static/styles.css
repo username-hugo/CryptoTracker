@@ -8,13 +8,9 @@ body {
 .main-container {
     width: 100%;
     height: 50vh;
-    /* Ajustar la altura para compensar el ancho del scrollbar */
     display: flex;
-    /* Usar flexbox */
     justify-content: center;
-    /* Centrar horizontalmente */
     align-items: center;
-    /* Centrar verticalmente */
     background-color: #4fc381;
 }
 
@@ -28,54 +24,82 @@ body {
     color: white;
 }
 
-
 .currencies-container {
     width: 99%;
     height: 47vh;
     margin: auto;
-    background-color: white;
+    background-color: #F4F5F6;
+    /* Cambiado a rojo para visualizar mejor */
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid red;
     overflow: hidden;
-    /* Ocultar el desbordamiento */
     display: flex;
-    /* Usar flexbox para alinear elementos */
 }
 
 .table-wrapper {
     width: 50%;
-    /* Ocupa el 50% del ancho de currencies-container */
     overflow-x: auto;
-    /* Añade scroll horizontal si es necesario */
-    border: 2px solid red;
+    background-color: #F4F5F6;
+
+
 }
 
 .crypto-table {
-    border-collapse: collapse;
-    /* Colapsar los bordes de la tabla */
+    border-collapse: separate;
+    /* Usar bordes separados */
+    border-spacing: 0 5px;
     width: 100%;
-    /* Ocupa el 100% del ancho del contenedor */
+
 }
 
-.crypto-table th,
+.crypto-table tr {
+    background-color: white;
+}
+
 .crypto-table td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
-    /* Borde inferior para las celdas */
     text-align: center;
-    /* Centrar el contenido de las celdas */
 }
 
-.crypto-table th {
-    background-color: #f0f0f0;
-    /* Color de fondo para las cabeceras */
+.crypto-table td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.crypto-table td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.crypto-logo {
+    display: flex;
+    width: 100px;
+    margin-left: -50px;
+}
+
+.crypto-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -100px;
+}
+
+.crypto-name {
+    font-weight: bold;
 }
 
 .crypto-table img {
     width: 40px;
-    /* Tamaño del logo */
     display: block;
     margin: 0 auto;
-    /* Centra la imagen horizontalmente */
+}
+
+
+.crypto-table-wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+.crypto-table-wrapper {
+    overflow: auto;
 }

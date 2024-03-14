@@ -14,22 +14,20 @@
         <span class='title'>CRYPTO<br/>TRACKER</span>
     </div>
     <div class="currencies-container">
-        <div class="table-wrapper">
+        <div class="table-wrapper crypto-table-wrapper">
             <table class="crypto-table">
-                <thead>
-                    <tr>
-                        <th>Logo</th>
-                        <th>Name</th>
-                        <th>Symbol</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
                 <tbody class="crypto-list">
                     {% for crypto in cryptos %}
                     <tr>
-                        <td><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
-                        <td>{{ crypto.name }}</td>
-                        <td>{{ crypto.symbol }}</td>
+                        <td class="crypto-rank">{{ crypto.cmc_rank }}</td>
+                        <td class="crypto-logo"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
+                        <td>
+                            <div class="crypto-info">
+                                <div class="crypto-name">{{ crypto.name }}</div>
+                                <div class="crypto-symbol">{{ crypto.symbol }}</div>
+                            </div>
+                        </td>
+                        <td>{{ crypto.quote.USD.price }}</td>
                         <td>${{ crypto.quote.USD.price }}</td>
                     </tr>
                     {% endfor %}
