@@ -1,55 +1,100 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #4fc381;
     overflow: hidden;
 }
+
+body * {
+    user-select: none;
+}
+
 
 .main-container {
     width: 100%;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4fc381;
+    height: 8vh;
+    background-color: white;
+    /* border: solid 3px red !important; */
 }
 
-.title {
-    font-size: 200px;
-    font-weight: 900;
+.main-page {
+    display: flex;
+    width: 100%;
+    height: 91vh;
+    /* border: solid 3px yellow !important; */
+}
+
+.sidebar {
+    width: 10%;
+    background-color: white;
+    /* border: solid 3px red !important; */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-links li {
+    font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    letter-spacing: -10px;
-    line-height: 0.75;
-    text-align: center;
+    margin: 10px 0;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links li a:hover {
+    background-color: #007bff;
+    cursor: pointer;
     color: white;
 }
 
-.currencies-container {
-    width: 99%;
-    height: 47vh;
-    margin: auto;
-    background-color: #F4F5F6;
-    /* Cambiado a rojo para visualizar mejor */
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+.content-container {
+    flex-grow: 1;
     display: flex;
+    padding: 20px;
+    background-color: #F4F5F6;
+    border-top-left-radius: 10px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 
-.table-wrapper {
-    width: 50%;
+.title {
+    font-size: 60px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 1%;
+    letter-spacing: -5px;
+    color: black;
+}
+
+.currencies-container {
+    width: 61%;
+    height: 46vh;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
-    background-color: #F4F5F6;
+}
 
-
+.currencies-container::-webkit-scrollbar {
+    width: 0;
 }
 
 .crypto-table {
     border-collapse: separate;
-    /* Usar bordes separados */
     border-spacing: 0 5px;
     width: 100%;
-
 }
 
 .crypto-table tr {
@@ -57,8 +102,9 @@ body {
 }
 
 .crypto-table td {
-    padding: 10px;
     text-align: center;
+    width: 16.6%;
+    overflow: hidden;
 }
 
 .crypto-table td:first-child {
@@ -71,35 +117,59 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-
-.crypto-logo {
-    display: flex;
-    width: 100px;
-    margin-left: -50px;
-}
-
-.crypto-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: -100px;
-}
-
-.crypto-name {
-    font-weight: bold;
-}
-
 .crypto-table img {
     width: 40px;
-    display: block;
-    margin: 0 auto;
 }
 
-
-.crypto-table-wrapper::-webkit-scrollbar {
-    width: 0;
+.crypto-amount {
+    border: none;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f2;
+    vertical-align: middle;
+    outline: none;
+    /* Eliminar el contorno al enfocar */
+    transition: box-shadow 0.3s;
+    /* Agregar una transición suave para el efecto de sombra */
 }
 
-.crypto-table-wrapper {
-    overflow: auto;
+.crypto-amount:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Agregar una sombra suave al enfocar */
+}
+
+.total-container {
+    width: 38%;
+    height: 46vh;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin-left: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#total-title {
+    margin-bottom: 20px;
+    font-size: 44px;
+}
+
+.value-container {
+    font-size: 24px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 20px solid;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#total-value {
+    font-size: 20px;
 }

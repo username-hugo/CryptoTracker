@@ -5,34 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 10 Cryptocurrencies</title>
     <link rel="stylesheet" href="../static/styles.css">
+    <script src="static/script.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;&display=swap" rel="stylesheet">
-
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></head>
 <body>
     <div class="main-container">
-        <span class='title'>CRYPTO<br/>TRACKER</span>
+        <span class='title'>CryptoTracker</span>
     </div>
-    <div class="currencies-container">
-        <div class="table-wrapper crypto-table-wrapper">
-            <table class="crypto-table">
-                <tbody class="crypto-list">
-                    {% for crypto in cryptos %}
-                    <tr>
-                        <td class="crypto-rank">{{ crypto.cmc_rank }}</td>
-                        <td class="crypto-logo"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
-                        <td>
-                            <div class="crypto-info">
-                                <div class="crypto-name">{{ crypto.name }}</div>
-                                <div class="crypto-symbol">{{ crypto.symbol }}</div>
-                            </div>
-                        </td>
-                        <td>{{ crypto.quote.USD.price }}</td>
-                        <td>${{ crypto.quote.USD.price }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    
+    <div class="main-page">
+        <div class="sidebar">
+            <ul class="nav-links">
+                <li><a id="dashboard-link"><i class="fa-solid fa-chart-line" style='margin-right: 10px'></i>Dashboard</a></li>
+                <li><a id="contact-link"><i class="fa-solid fa-user-secret" style='margin-right: 10px'></i>About me</a></li>
+            </ul>
+        </div>
+
+        <div class='content-container'>
+            <div class="currencies-container" id="dashboard-content">
+                <table class="crypto-table">
+                    <tbody class="crypto-list">
+                        {% for crypto in cryptos %}
+                        <tr>
+                            <td class="crypto-rank">{{ crypto.cmc_rank }}</td>
+                            <td class="crypto-logo"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
+                            <td>
+                                <div class="crypto-info">
+                                    <div class="crypto-name">{{ crypto.name }}</div>
+                                    <div class="crypto-symbol">{{ crypto.symbol }}</div>
+                                </div>
+                            </td>
+                            <td>${{ crypto.quote.USD.price }}</td>
+                            <td><input type="number" class="crypto-amount" data-price="{{ crypto.quote.USD.price }}"></td>
+                            <td class="crypto-total">0</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="total-container" id='total-container-id'>
+                <span id='total-title'>Total Income</span>
+                <div class="value-container">
+                    <span id="total-value">$0</span>
+                </div>
+            </div>
+
+            <div id="crypto-more" class="main-content" style="display: none;">
+                <span>hxxg</span>
+            </div>    
         </div>
     </div>
 </body>
