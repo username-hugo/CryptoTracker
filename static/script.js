@@ -21,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleElement.style.display = (showElement === dashboardContent) ? "block" : "none";
         dashboardContent.style.overflowY = (showElement === dashboardContent) ? "auto" : "hidden";
     }
-});
 
-
-document.addEventListener("DOMContentLoaded", function () {
     // Obtener todos los campos de entrada
     var amountInputs = document.querySelectorAll(".crypto-amount");
 
@@ -55,9 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalCell.textContent = totalValue;
         });
     });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
     // Función para actualizar el total
     function updateTotal() {
         // Obtener el elemento span del total
@@ -113,4 +108,62 @@ document.addEventListener("DOMContentLoaded", function () {
             updateTotal();
         });
     });
+
+    // 'Phantom wallet' connection function
+    document.getElementById("connect-wallet-btn").addEventListener("click", async () => {
+        try {
+            if (window.solana && window.solana.connect) {
+                const connected = await window.solana.connect();
+                if (connected) {
+                    const balance = await obtenerSaldo(connected.publicKey);
+                    document.getElementById("wallet-name").textContent = "Wallet: " + connected.publicKey.toString();
+                    mostrarSaldo(balance);
+                } else {
+                    console.log("La conexión de la billetera falló");
+                }
+            } else {
+                console.error("Solana wallet not available.");
+            }
+        } catch (error) {
+            console.error("Error al conectar la billetera:", error);
+        }
+    });
+
+    document.getElementById("disconnect-wallet-btn").addEventListener("click", async () => {
+        try {
+            if (window.solana && window.solana.disconnect) {
+                await window.solana.disconnect();
+                document.getElementById("wallet-name").textContent = "Wallet: Not Connected";
+                document.getElementById("wallet-balance").textContent = "Balance: Not Available";
+            } else {
+                console.error("Solana wallet disconnect function not available.");
+            }
+        } catch (error) {
+            console.error("Error al desconectar la billetera:", error);
+        }
+    });
+
+    async function obtenerSaldo(publicKey) {
+        try {
+            if (window.solanaWeb3 && window.solanaWeb3.Connection) {
+                const connection = new window.solanaWeb3.Connection("https://api.mainnet-beta.solana.com");
+                const balance = await connection.getBalance(publicKey);
+                const solBalance = balance / (10 ** 9); // Convertir lamports a SOL
+                console.log("Saldo en lamports:", balance);
+                console.log("Saldo en SOL:", solBalance);
+                return solBalance;
+            } else {
+                console.error("Solana Web3 library not available.");
+                return 0;
+            }
+        } catch (error) {
+            console.error("Error al obtener el saldo de la cuenta:", error);
+            return 0;
+        }
+    }
+
+
+    function mostrarSaldo(balance) {
+        document.getElementById("wallet-balance").textContent = "Balance: " + balance + " SOL";
+    }
 });

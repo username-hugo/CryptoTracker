@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 10 Cryptocurrencies</title>
     <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <script src="static/script.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
     <div class="main-container">
         <span class='title'>CryptoTracker</span>
+        <div class='wallet-div'>
+            <div id="wallet-buttons">
+                <button id="connect-wallet-btn">Connect Wallet</button>
+                <button id="disconnect-wallet-btn">Disconnect Wallet</button>
+            </div>
+            <div id="wallet-name">Wallet:</div>
+        </div>
     </div>
     
     <div class="main-page">
