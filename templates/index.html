@@ -7,61 +7,91 @@
     <link rel="stylesheet" href="../static/styles.css">
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <script src="static/script.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="main-container">
-        <span class='title'>CryptoTracker</span>
-        <div class='wallet-div'>
-            <div id="wallet-buttons">
-                <button id="connect-wallet-btn">Connect Wallet</button>
-                <button id="disconnect-wallet-btn">Disconnect Wallet</button>
-            </div>
-            <div id="wallet-name">Wallet:</div>
-        </div>
-    </div>
-    
     <div class="main-page">
         <div class="sidebar">
             <ul class="nav-links">
-                <li><a id="dashboard-link"><i class="fa-solid fa-chart-line" style='margin-right: 10px'></i>Dashboard</a></li>
-                <li><a id="contact-link"><i class="fa-solid fa-user-secret" style='margin-right: 10px'></i>About me</a></li>
+                <li class="title-container">
+                    <div class="title-image"></div>
+                    <div class="title-text">
+                        <span class='title-1'>Project</span>
+                        <span class='title-2'>CryptoTracker</span>
+                    </div>
+                </li>
+                <li class="nav-section-container" id="dashboard-link"><i class="fa-solid fa-chart-line"></i>Dashboard</li>
+                <li class="nav-section-container" id="contact-link"><i class="fa-solid fa-user-secret"></i>About me</li>
             </ul>
         </div>
 
         <div class='content-container'>
-            <div class="currencies-container" id="dashboard-content">
-                <table class="crypto-table">
-                    <tbody class="crypto-list">
-                        {% for crypto in cryptos %}
+            <div class='header-section'>
+                <table class="header-table">
+                    <tbody>
                         <tr>
-                            <td class="crypto-rank">{{ crypto.cmc_rank }}</td>
-                            <td class="crypto-logo"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
-                            <td>
-                                <div class="crypto-info">
-                                    <div class="crypto-name">{{ crypto.name }}</div>
-                                    <div class="crypto-symbol">{{ crypto.symbol }}</div>
-                                </div>
+                            <td class="header-table-td">
+                                <span>Hey, </span>
+                                <span id="wallet-name"/>
                             </td>
-                            <td>${{ crypto.quote.USD.price }}</td>
-                            <td><input type="number" class="crypto-amount" data-price="{{ crypto.quote.USD.price }}"></td>
-                            <td class="crypto-total">0</td>
+                            <td class="header-table-td">
+                                <span> 
+                                    <div id="wallet-buttons">
+                                        <button id="connect-wallet-btn">Connect Wallet</button>
+                                        <button id="disconnect-wallet-btn">Disconnect Wallet</button>
+                                    </div>
+                                </span>
+                            </td>
                         </tr>
-                        {% endfor %}
+                        <tr>
+                            <td class="header-table-td">
+                                <div id="fecha"></div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="total-container" id='total-container-id'>
-                <span id='total-title'>Total Income</span>
-                <div class="value-container">
-                    <span id="total-value">$0</span>
-                </div>
-            </div>
 
-            <div id="crypto-more" class="main-content" style="display: none;">
-                <span>hxxg</span>
+            <div class='body-section'>
+                <div class="currencies-container" id="dashboard-content">
+                    <table class="crypto-table">
+                        {% for crypto in cryptos %}
+                        <tr>
+                            <td>{{ crypto.cmc_rank }}</td>
+                            <td><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
+                            <td>{{ crypto.name }} {{ crypto.symbol }}</td>
+                            <td>${{ crypto.quote.USD.price | round(2) }}</td>
+                            <td><input type="number" class="crypto-amount" data-price="{{ crypto.quote.USD.price }}"></td>
+                            <td class="crypto-total">0</td>
+                        </tr>
+                        <tr class="row-divider">
+                            <td colspan="6"/>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <table class="content-table" id='content-table-id'>
+                    <tbody>
+                        <tr>
+                            <td class="total-container" >
+                                <span id='total-title'>Total Income</span>
+                                <div class="value-container">
+                                    <span id="total-value">$0</span>
+                                </div>
+                            </td>
+                            <td class="total-container2"><span>2</span></td>
+                        </tr>
+                        <tr>
+                            <td class="total-container3"><span>3</span></td>
+                            <td class="total-container4"><span>4</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="crypto-more" class="main-content" style="display: none;">
+                    <span>hxxg</span>
+                </div>    
             </div>    
         </div>
     </div>

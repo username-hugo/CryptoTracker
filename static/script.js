@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var contactLink = document.getElementById("contact-link");
     var dashboardContent = document.getElementById("dashboard-content");
     var cryptoMoreDiv = document.getElementById("crypto-more");
-    var totalContainer = document.getElementById("total-container-id");
+    var totalContainer = document.getElementById("content-table-id");
 
     dashboardLink.addEventListener("click", function (event) {
         event.preventDefault();
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const connected = await window.solana.connect();
                 if (connected) {
                     const balance = await obtenerSaldo(connected.publicKey);
-                    document.getElementById("wallet-name").textContent = "Wallet: " + connected.publicKey.toString();
+                    document.getElementById("wallet-name").textContent = connected.publicKey.toString();
                     mostrarSaldo(balance);
                 } else {
                     console.log("La conexión de la billetera falló");
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             if (window.solana && window.solana.disconnect) {
                 await window.solana.disconnect();
-                document.getElementById("wallet-name").textContent = "Wallet: Not Connected";
+                document.getElementById("wallet-name").textContent = "Not Connected";
                 document.getElementById("wallet-balance").textContent = "Balance: Not Available";
             } else {
                 console.error("Solana wallet disconnect function not available.");
@@ -166,4 +166,34 @@ document.addEventListener("DOMContentLoaded", function () {
     function mostrarSaldo(balance) {
         document.getElementById("wallet-balance").textContent = "Balance: " + balance + " SOL";
     }
+
+    //MOSTRAR LA FECHA
+    // Obtener el div donde se mostrará la fecha y la hora
+    const fechaDiv = document.getElementById("fecha");
+
+    // Función para actualizar la fecha y la hora cada segundo
+    function actualizarFechaHora() {
+        // Obtener la fecha y la hora actual
+        const fechaHoraActual = new Date();
+
+        // Opciones para formatear la fecha
+        const opcionesFecha = {
+            weekday: 'long', // Día de la semana completo (ej: "Sunday")
+            month: 'long',   // Mes completo (ej: "June")
+            day: 'numeric',  // Día del mes (ej: "23")
+            year: 'numeric'  // Año (ej: "2024")
+        };
+
+        // Formatear la fecha y la hora
+        const fechaFormateada = fechaHoraActual.toLocaleDateString('en-US', opcionesFecha);
+
+        // Mostrar la fecha y la hora en el div
+        fechaDiv.textContent = `${fechaFormateada}`;
+    }
+
+    // Llamar a la función inicialmente para mostrar la fecha y la hora actual
+    actualizarFechaHora();
+
+    // Llamar a la función cada segundo para actualizar la fecha y la hora
+    setInterval(actualizarFechaHora, 1000);
 });
