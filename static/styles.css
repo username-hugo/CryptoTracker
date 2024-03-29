@@ -127,7 +127,7 @@ body * {
 }
 
 .header-section {
-    border: solid 3px orange !important;
+    /* border: solid 3px orange !important; */
     height: 10%;
 }
 
