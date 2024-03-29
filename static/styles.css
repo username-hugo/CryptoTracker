@@ -116,7 +116,7 @@ body * {
 
 .content-container {
     width: 83%;
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
@@ -147,7 +147,8 @@ body * {
 
 .body-section {
     display: flex;
-    height: 89%;
+    height: 90%;
+    /* border: solid 3px black !important; */
 }
 
 .currencies-container {
@@ -155,12 +156,30 @@ body * {
     background-color: white;
     border-radius: 15px;
     border: solid #E5E5E5 0.1em;
-    overflow-x: auto;
-    /* border: solid red 2px; */
+    overflow: hidden;
+    position: relative;
 }
 
-.currencies-container::-webkit-scrollbar {
-    width: 0;
+.scroll-area {
+    overflow-y: auto;
+    max-height: calc(100% - 5px);
+    margin-right: 5px;
+}
+
+.scroll-area::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+    background: #E5E5E5;
+    border-radius: 15px;
+    width: 100%;
+    height: 15%;
+    margin-right: 20px !important;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+    margin: 10px;
 }
 
 .crypto-table {
@@ -225,9 +244,6 @@ body * {
     object-fit: cover;
     box-sizing: border-box;
 }
-
-
-
 
 .content-table {
     border: solid 3px red !important;

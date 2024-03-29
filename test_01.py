@@ -10,14 +10,14 @@ API_KEY = "cc703f73-c56d-4f21-927a-c8405a5fb304"
 BASE_URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
 
 
-# Función para obtener los datos de las 10 primeras criptomonedas
+# Función para obtener los datos de la informacion de las criptomonedas en coinmarketcap
 def get_top_10_cryptos():
     headers = {
         "Accepts": "application/json",
         "X-CMC_PRO_API_KEY": API_KEY,
     }
 
-    params = {"limit": "600"}
+    params = {"limit": "800"}
 
     response = requests.get(BASE_URL, headers=headers, params=params)
     data = response.json()

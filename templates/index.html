@@ -54,21 +54,23 @@
 
             <div class='body-section'>
                 <div class="currencies-container" id="dashboard-content">
-                    <table class="crypto-table">
-                        {% for crypto in cryptos %}
-                        <tr>
-                            <td>{{ crypto.cmc_rank }}</td>
-                            <td><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
-                            <td>{{ crypto.name }} {{ crypto.symbol }}</td>
-                            <td>${{ crypto.quote.USD.price | round(2) }}</td>
-                            <td><input type="number" class="crypto-amount" data-price="{{ crypto.quote.USD.price }}"></td>
-                            <td class="crypto-total">0</td>
-                        </tr>
-                        <tr class="row-divider">
-                            <td colspan="6"/>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                    <div class="scroll-area">
+                        <table class="crypto-table">
+                            {% for crypto in cryptos %}
+                            <tr>
+                                <td>{{ crypto.cmc_rank }}</td>
+                                <td><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ crypto.id }}.png" alt="{{ crypto.name }} logo"></td>
+                                <td>{{ crypto.name }} {{ crypto.symbol }}</td>
+                                <td>${{ crypto.quote.USD.price | round(2) }}</td>
+                                <td><input type="number" class="crypto-amount" data-price="{{ crypto.quote.USD.price }}"></td>
+                                <td class="crypto-total">0</td>
+                            </tr>
+                            <tr class="row-divider">
+                                <td colspan="6"/>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </div>
 
                 <table class="content-table" id='content-table-id'>
